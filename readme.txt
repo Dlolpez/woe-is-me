@@ -1,4 +1,6 @@
 Project Name: Woe is Me
+Group Members: David Lopez 743225
+		Jonathan Montaluisa 743235
 
 What the application does?
 The application is a isometric third person shooter. It consists in you fighting for your life against endless waves of pirate robots in the middle of the ocean. 
@@ -23,7 +25,7 @@ Note: The use of an ortographic camera was intentional since we consider is the 
 The camera motion is implemented with a very simple script that follows the player on the map (CameraFollow.cs) it simply moves according to the player position and applies a smoothing to avoid making the movement so harsh.
 
 The graphics was by far the hardest part in the implementation of the game. Fortunately, we got working a surface shader to make a simple plane look like a realistic ocean (see the Water.shader). It supports textures and even bump mapping. Furthermore, some simple particle systems were used for the effect of fire on the truck.
-Finally, the game uses a Cel or Toon shader for most of the objects in the game. This was implemented with the help of the tutorial listed below, though some modifications had to be made for example, for texture support.
+Finally, the game uses a Cel or Toon shader for most of the objects in the game. This was implemented with the help of the tutorial listed below, though some modifications had to be made. We added a second pass to the toon shader for the objects to cast shadows. Also, we used the shader provided in the “Other Examples” folder (in the subject dropbox) to get our floor to receive lights and shadows.
 
 No APIs have been used for the development of this game.
 The code used was ours however several tutorials were used in the creation of the game and it is worth citing them: 
