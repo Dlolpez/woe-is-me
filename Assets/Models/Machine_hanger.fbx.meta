@@ -3,7 +3,14 @@ guid: 35ee5d47d694b104cbc71b43588b7d9b
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
+    100000: Machine_hanger
+    100002: //RootNode
+    400000: Machine_hanger
+    400002: //RootNode
+    2300000: Machine_hanger
+    3300000: Machine_hanger
     4300000: Machine_hanger
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 3
@@ -11,7 +18,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleCurves: 1
+    resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
