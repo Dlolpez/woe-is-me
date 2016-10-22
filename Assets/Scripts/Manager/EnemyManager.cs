@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour
 	public float spawnTime = 3f;
 	public Transform[] spawnPoints;
 
-	private int wave = 1;
+	//private int wave = 1;
 
 	//private GameObject[] getCount;
 	//private int count;

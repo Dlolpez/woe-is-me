@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -14,7 +15,6 @@ public class PlayerHealth : MonoBehaviour
 
 
 	Animator anim;
-	//AudioSource playerAudio;
 	PlayerMovement playerMovement;
 	PlayerShooting playerShooting;
 	bool isDead;
@@ -24,25 +24,24 @@ public class PlayerHealth : MonoBehaviour
 
 	void Awake ()
 	{
-		//kit = GameObject.FindGameObjectWithTag ("healthkit");
+		kit = GameObject.FindGameObjectWithTag ("kit");
 		anim = GetComponent <Animator> ();
-		//playerAudio = GetComponent <AudioSource> ();
 		playerMovement = GetComponent <PlayerMovement> ();
 		playerShooting = GetComponentInChildren <PlayerShooting> ();
 		currentHealth = startingHealth;
-	}
-	/*
+        healthSlider.value = currentHealth;
+    }
+	
 	void OnTriggerEnter (Collider other)
 	{
 		if(other.gameObject == kit )
 		{
 			Destroy(other.gameObject);
-			currentHealth += 50;
+			currentHealth += 100;
 			healthSlider.value = currentHealth;
 
 		}
 	}
-*/
 
 	void Update ()
 	{
@@ -71,7 +70,10 @@ public class PlayerHealth : MonoBehaviour
 		if(currentHealth <= 0 && !isDead)
 		{
 			Death ();
-		}
+            Wait();
+            RestartLevel();
+
+        }
 	}
 
 
@@ -83,16 +85,19 @@ public class PlayerHealth : MonoBehaviour
 
 		anim.SetTrigger ("Die");
 
-		//playerAudio.clip = deathClip;
-		//playerAudio.Play ();
-
 		playerMovement.enabled = false;
 		playerShooting.enabled = false;
-	}
+        
+    }
 
 
 	public void RestartLevel ()
 	{
-		Application.LoadLevel (Application.loadedLevel);
+        int scene = SceneManager.GetActiveScene().buildIndex;
+		SceneManager.LoadScene (scene, LoadSceneMode.Single);
 	}
+
+    IEnumerator Wait() {
+        yield return new WaitForSeconds(5f);
+    }
 }

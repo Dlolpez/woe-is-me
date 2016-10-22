@@ -5,9 +5,9 @@ public class PlayerShooting : MonoBehaviour
 	public int damagePerShot = 20;
 	public float timeBetweenBullets = 0.15f;
 	public float range = 100f;
-
-
-	float timer;
+    public JoystickMovement turninPlayer;
+    //public GameObject player;
+    float timer;
 	Ray shootRay;
 	RaycastHit shootHit;
 	int shootableMask;
@@ -32,8 +32,8 @@ public class PlayerShooting : MonoBehaviour
 	{
 		timer += Time.deltaTime;
 
-		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0)
-		{
+		if( turninPlayer.InputDirection != Vector3.zero && timer >= timeBetweenBullets && Time.timeScale != 0)//Input.GetButton ("Fire1") &&
+        {
 			Shoot ();
 		}
 
@@ -66,7 +66,7 @@ public class PlayerShooting : MonoBehaviour
 		gunLine.SetPosition (0, transform.position);
 
 		shootRay.origin = transform.position;
-		shootRay.direction = transform.forward;
+		shootRay.direction = turninPlayer.InputDirection;
 
 		if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))
 		{
